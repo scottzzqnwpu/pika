@@ -49,6 +49,7 @@ cd output
 * bzips - a library for fast data compression
 * protobuf - google protobuf library
 * glog - google log library
+* json-c - json library
 
 ### Supported platforms
 
