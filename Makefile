@@ -45,11 +45,13 @@ LIB_PATH = -L./ \
 		   -L$(THIRD_PATH)/nemo/output/lib/ \
 		   -L$(THIRD_PATH)/slash/output/lib/ \
 		   -L$(THIRD_PATH)/pink/output/lib/ \
-		   -L$(THIRD_PATH)/glog/.libs/
+		   -L$(THIRD_PATH)/glog/.libs/ \
+		   -Wl,-Bstatic \
+		   -lglog \
+		   -Wl,-Bdynamic
 
 
 LIBS = -lpthread \
-	   -lglog \
 	   -lnemo \
 	   -lslash \
 	   -lrocksdb \
@@ -58,11 +60,11 @@ LIBS = -lpthread \
 	   -lbz2 \
 	   -lsnappy \
 	   -ljson \
+	   -lunwind \
 	   -lrt
 
 NEMO = $(THIRD_PATH)/nemo/output/lib/libnemo.a
-#GLOG = $(SO_DIR)/libglog.so.0
-GLOG = $(THIRD_PATH)/glog/.libs/libglog.so.0
+GLOG = $(THIRD_PATH)/glog/.libs/libglog.a
 PINK = $(THIRD_PATH)/pink/output/lib/libpink.a
 SLASH = $(THIRD_PATH)/slash/output/lib/libslash.a
 
@@ -83,8 +85,6 @@ all: $(OBJECT)
 	mkdir $(OUTPUT)
 	mkdir $(OUTPUT)/bin
 	cp -r ./conf $(OUTPUT)/
-	mkdir $(OUTPUT)/lib
-	cp -r $(SO_DIR)/*  $(OUTPUT)/lib
 	cp $(OBJECT) $(OUTPUT)/bin/
 	mkdir $(OUTPUT)/tools
 	if [ -d $(TOOLS_DIR) ]; then \
