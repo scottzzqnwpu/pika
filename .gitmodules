@@ -1,6 +1,3 @@
-[submodule "third/nemo"]
-	path = third/nemo
-	url = https://github.com/scottzzqnwpu/nemo.git
 [submodule "third/glog"]
 	path = third/glog
 	url = https://github.com/CatKang/glog.git
@@ -10,3 +7,6 @@
 [submodule "third/slash"]
 	path = third/slash
 	url = https://github.com/baotiao/slash.git
+[submodule "third/nemo"]
+	path = third/nemo
+	url = git@github.com:scottzzqnwpu/nemo.git
